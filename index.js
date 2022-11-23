@@ -22,7 +22,7 @@ app.use(express.static('public'));
 
 // initialise session middleware - flash-express depends on it
 app.use(session({
-    secret: "fehrt6912",
+    secret: "kay",
     resave: false,
     saveUninitialized: true
 }));
@@ -30,7 +30,7 @@ app.use(session({
 // initialise the flash middleware
 app.use(flash());
 
-const DATABASE_URL = process.env.DATABASE_URL || "postgresql://zuggs :suggest123@localhost:5432/spaza_suggest";
+const DATABASE_URL = process.env.DATABASE_URL || "postgresql://zuggs:suggest123@localhost:5432/spaza_suggest";
 
 const config = {
     connectionString: DATABASE_URL
