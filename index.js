@@ -98,7 +98,7 @@ app.post('/register', async (req, res) => {
 
     if (username) {
         // create a unique code foe the user.
-        const Code = uid();
+        const uniqCode = uid();
         username = username.toLowerCase();
         // check if the user is in the database - if so return an error
 
@@ -109,14 +109,9 @@ app.post('/register', async (req, res) => {
             req.flash('error', `Username already exists - ${username}`);
         } else {
             // insert the user in the database...
-           // const client=await spazaSuggest.registerClient(username)
-             
-        const client=await db.none(`insert into spaza_client (username, code) values ($1, $2)`, [username, Code])
-       
-
-
-            // show a message that the user was added
-            req.flash('success', 'User was added - use this code : ' + code);
+           const client=await spazaSuggest.registerClient(username)
+         // show a message that the user was added
+        req.flash('success', 'User was added - use this code : ' + uniqCode);
         }
 
     } else {
