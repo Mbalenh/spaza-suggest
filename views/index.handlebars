@@ -2,7 +2,7 @@
 
     <form action="/add" method="post">
 
-        <h2></h2>
+        <h2>Add suggestion </h2>
 
         <div>
             <a href="/logout">Logout</a>
@@ -20,5 +20,23 @@
             {{user.username}}
         </div>
 
+        <div class="field">
+            <label for="area_name">Area</label>
+            <select name="area_name" id="area_name">
+                <option value="">Select a Area</option>
+                {{#each Area}}
+                <option value="{{id}}">{{area_name}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </form>
+    <form action="/suggestion" method="POST">
+    Add suggestion <input type="text" name="username">
+    <br>
+     <p><span class="display">{{messages.success}} </span></p>
+        <p><span class="error">{{messages.error}}</span></p>
+    <input type="submit" value="submit">
+
+</form>
 
 </div>
